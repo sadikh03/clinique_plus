@@ -52,6 +52,7 @@ public class FactureController {
         service.ajouter(f);
         Alerte.afficherAlerte("Succès", "Facture enregistrée !", Alert.AlertType.INFORMATION);
         FacturePDFGenerator.genererFacturePDF(f);
+        Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
         chargerDonnees();
         effacerChamps();
     }
@@ -71,6 +72,7 @@ public class FactureController {
             factureSelected.setConsultation(cbConsultation.getValue());
 
             service.modifier(factureSelected);
+            Alerte.afficherAlerte("Succes", "Modification effectuer avec succes", Alert.AlertType.INFORMATION);
             chargerDonnees();
             effacerChamps();
         }

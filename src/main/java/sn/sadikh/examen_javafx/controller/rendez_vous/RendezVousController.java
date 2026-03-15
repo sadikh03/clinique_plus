@@ -69,6 +69,7 @@ public class RendezVousController {
             rdvSelected.setDateHeure(LocalDateTime.of(dtRDV.getValue() , LocalTime.parse(cbHeure.getValue())));
 
             service.modifier(rdvSelected);
+            Alerte.afficherAlerte("Succes", "Modification effectuer avec succes", Alert.AlertType.INFORMATION);
             chargerDonnees();
         }
     }
@@ -91,6 +92,7 @@ public class RendezVousController {
         }
 
         RendezVous rdv = creeRDV();
+        Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
 
         service.ajouter(rdv);
         chargerDonnees();

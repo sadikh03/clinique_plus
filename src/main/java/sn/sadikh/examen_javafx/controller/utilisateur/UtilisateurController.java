@@ -82,6 +82,7 @@ public class UtilisateurController {
         }
 
         service.ajouter(creeUtilisateur());
+        Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
         chargerDonnees();
         effacerChamps();
     }
@@ -99,9 +100,17 @@ public class UtilisateurController {
     @FXML
     private void supprimer(){
         if(utilisateurSelected != null){
-            service.supprimer(utilisateurSelected.getId());
-            effacerChamps();
-            chargerDonnees();
+            boolean confirme = Alerte.confirmerSuppression(
+                    "Confirmation de suppression",
+                    "Voulez-vous vraiment supprimer l'utilisateur " + utilisateurSelected.getUsername() + " ?"
+            );
+
+            if (confirme) {
+                service.supprimer(utilisateurSelected.getId());
+                effacerChamps();
+                chargerDonnees();
+                Alerte.afficherAlerte("Succès", "Patient supprimé avec succès", Alert.AlertType.INFORMATION);
+            }
         }
     }
 
@@ -124,6 +133,7 @@ public class UtilisateurController {
             utilisateurSelected.setRole(cbRole.getValue());
 
             service.modifier(utilisateurSelected);
+            Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
             chargerDonnees();
             effacerChamps();
         }

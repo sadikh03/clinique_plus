@@ -91,6 +91,7 @@ public class PatientController {
         Patient p = creerPatient();
 
         service.ajouter(p);
+        Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
         chargerDonnees();
         effacerChamps();
     }
@@ -112,9 +113,18 @@ public class PatientController {
     @FXML
     private void supprimer(){
         if(patientSelected != null){
-            service.supprimer(patientSelected.getId());
-            effacerChamps();
-            chargerDonnees();
+            boolean confirme = Alerte.confirmerSuppression(
+                    "Confirmation de suppression",
+                    "Voulez-vous vraiment supprimer le patient " + patientSelected.getNom() + " " + patientSelected.getPrenom() + " ?"
+            );
+
+            if (confirme) {
+                service.supprimer(patientSelected.getId());
+                effacerChamps();
+                chargerDonnees();
+                Alerte.afficherAlerte("Succès", "Suppression effectuer avec succès", Alert.AlertType.INFORMATION);
+            }
+
         }
     }
 
@@ -132,6 +142,7 @@ public class PatientController {
             patientSelected.setAntecedentsMedicaux(txtAnt.getText());
 
             service.modifier(patientSelected);
+            Alerte.afficherAlerte("Succes", "Modification effectuer avec succes", Alert.AlertType.INFORMATION);
             chargerDonnees();
             effacerChamps();
         }

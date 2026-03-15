@@ -44,6 +44,7 @@ public class consultationController {
         Consultation c = creeConsultation();
 
         service.ajouter(creeConsultation());
+        Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
         chargerDonnees();
         effacerChamps();
     }
@@ -64,6 +65,7 @@ public class consultationController {
             consultationSelected.setPrescription(txtPrescription.getText());
 
             service.modifier(consultationSelected);
+            Alerte.afficherAlerte("Succes", "Modifcation effectuer avec succes", Alert.AlertType.INFORMATION);
             chargerDonnees();
             effacerChamps();
         }
