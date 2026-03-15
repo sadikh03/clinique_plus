@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<AnchorPane prefHeight="400.0" prefWidth="760.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sn.sadikh.examen_javafx.controller.rendez_vous.RendezVousController">
+    <Pane prefHeight="650.0" prefWidth="280.0" style="-fx-background-color: #2c3e50;">
+        <Label layoutX="20.0" layoutY="20.0" text="Gestion RDV" textFill="WHITE">
+            <font>
+                <Font name="System Bold" size="18.0" />
+            </font>
+        </Label>
+
+        <Label layoutX="20.0" layoutY="93.0" text="Date du RDV" textFill="WHITE" />
+        <DatePicker fx:id="dtRDV" layoutX="20.0" layoutY="127.0" prefWidth="240.0" />
+
+        <Label layoutX="20.0" layoutY="177.0" text="Patient" textFill="WHITE" />
+        <ComboBox fx:id="cbPatient" layoutX="20.0" layoutY="200.0" prefWidth="240.0" />
+
+        <Label layoutX="20.0" layoutY="252.0" text="Medecin" textFill="WHITE" />
+        <ComboBox fx:id="cbMedecin" layoutX="20.0" layoutY="285.0" prefWidth="240.0" />
+
+        <Label layoutX="20.0" layoutY="333.0" text="Statut" textFill="WHITE" />
+        <ComboBox fx:id="cbStatut" layoutX="20.0" layoutY="368.0" prefWidth="240.0" />
+
+        <Label layoutX="20.0" layoutY="410.0" text="Heure" textFill="WHITE" />
+        <ComboBox fx:id="cbHeure" layoutX="20.0" layoutY="442.0" prefWidth="240.0" />
+
+        <VBox layoutX="20.0" layoutY="490.0" spacing="10.0" />
+        <HBox layoutX="19.0" layoutY="600.0" spacing="10.0" />
+        <HBox layoutX="19.0" layoutY="559.0" spacing="10.0">
+            <Button onAction="#enregistrer" prefWidth="115.0" style="-fx-background-color: #27ae60;" text="Enregistrer" textFill="WHITE" />
+            <Button onAction="#annuler" prefWidth="115.0" style="-fx-background-color: #7f8c8d;" text="Annuler" textFill="WHITE" />
+        </HBox>
+         <Button layoutX="20.0" layoutY="505.0" onAction="#modifier" prefHeight="25.0" prefWidth="240.0" style="-fx-background-color: #2980b9;" text="Modifier" textFill="WHITE" />
+    </Pane>
+
+    <TableView fx:id="table" layoutX="280.0" prefHeight="650.0" prefWidth="760.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="280.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
+        <columns>
+            <TableColumn fx:id="colId" prefWidth="40.0" text="ID" />
+            <TableColumn fx:id="colDate" prefWidth="180.0" text="Date" />
+            <TableColumn fx:id="colMedecin" prefWidth="190.0" text="Medecin" />
+            <TableColumn fx:id="colPatient" prefWidth="180.0" text="Patient" />
+            <TableColumn fx:id="colStatut" prefWidth="170.0" text="Statut" />
+        </columns>
+    </TableView>
+
+</AnchorPane>

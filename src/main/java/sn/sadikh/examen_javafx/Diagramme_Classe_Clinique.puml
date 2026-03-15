@@ -1,0 +1,87 @@
+@startuml
+' Configuration visuelle
+skinparam classAttributeIconSize 0
+skinparam shadowing false
+skinparam class {
+    BackgroundColor White
+    BorderColor #2c3e50
+    ArrowColor #3498db
+}
+
+' --- Énumérations ---
+enum Role {
+  ADMIN
+  MEDECIN
+  RECEPTIONNISTE
+}
+
+enum StatutRDV {
+  PROGRAMME
+  ANNULE
+  TERMINE
+}
+
+enum StatutPaiement {
+  NON_PAYE
+  PAYE
+}
+
+' --- Entités ---
+class Utilisateur {
+  - Long id
+  - String nom
+  - String prenom
+  - String login
+  - String password
+  - Role role
+}
+
+class Patient {
+  - Long id
+  - String nom
+  - String prenom
+  - String telephone
+  - LocalDate dateNaissance
+  - String adresse
+  - String groupeSanguin
+  - String antecedentsMedicaux
+  - String sexe
+}
+
+class RendezVous {
+  - Long id
+  - LocalDateTime dateHeure
+  - StatutRDV statut
+}
+
+class Consultation {
+  - Long id
+  - String diagnostic
+  - String prescription
+  - String observations
+}
+
+class Facture {
+  - Long id
+  - Double montantTotal
+  - String modePaiement
+  - StatutPaiement statut
+  - LocalDate dateFacture
+}
+
+' --- Relations ---
+Utilisateur "1" -- "0..*" RendezVous : < est affecté à
+Patient "1" -- "0..*" RendezVous : < appartient à
+
+Patient "1" -- "0..*" Consultation : < concerne
+Utilisateur "1" -- "0..*" Consultation : < réalise
+
+Consultation "1" -- "1" Facture : génère >
+Patient "1" -- "0..*" Facture : doit payer >
+
+' --- Liens avec les Enums ---
+Utilisateur .down.> Role
+RendezVous .down.> StatutRDV
+Facture .down.> StatutPaiement
+
+@enduml
