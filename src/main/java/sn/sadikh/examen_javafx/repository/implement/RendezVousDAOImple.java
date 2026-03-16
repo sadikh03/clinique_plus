@@ -20,7 +20,7 @@ public class RendezVousDAOImple extends GenericDAOImplement<RendezVous> implemen
         em.getTransaction().begin();
         try {
             return em.createQuery(
-                    "SELECT r FROM RendezVous r WHERE r.medecin = :medecin ORDER BY r.dateRDV DESC", RendezVous.class)
+                    "SELECT r FROM RendezVous r WHERE r.medecin = :medecin ORDER BY r.dateHeure DESC", RendezVous.class)
                     .setParameter("medecin", med)
                     .getResultList();
         } catch (Exception e) {

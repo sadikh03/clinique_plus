@@ -61,5 +61,10 @@ Lancer l'application :
 
 Exécuter la classe App.java (ou Main.java) depuis IntelliJ.
 
+## 📺 Démonstration Vidéo
+Si le fichier vidéo est trop lourd, vous pouvez visionner la démonstration des fonctionnalités (CRUD, Dashboard, Facturation) via ce lien :
+👉 [https://drive.google.com/file/d/1t7znz_YmNyEr_wGeSjfgVVgI0mAjUIeW/view?usp=drive_link]
+
 👨‍🎓 Auteur
+Amadou Sedikh NDIAYE
 Promotion L3GL - 2025-2026

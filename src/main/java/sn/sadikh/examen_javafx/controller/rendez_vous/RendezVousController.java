@@ -92,9 +92,8 @@ public class RendezVousController {
         }
 
         RendezVous rdv = creeRDV();
-        Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
-
         service.ajouter(rdv);
+        Alerte.afficherAlerte("Succes", "Ajout effectuer avec succes", Alert.AlertType.INFORMATION);
         chargerDonnees();
     }
 
